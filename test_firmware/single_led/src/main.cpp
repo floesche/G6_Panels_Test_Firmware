@@ -1,11 +1,5 @@
-#include <Arduino.h>
-#include <array>
-#include <pico.h>
-#include <Streaming.h>
-#include <ArduinoEigen.h>
 #include "constants.h"
 #include "utilities.h"
-
 
 void setup() {
 
