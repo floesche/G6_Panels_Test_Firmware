@@ -21,5 +21,21 @@ This displays a static pattern on the panel. Each active LED is time-division mu
 
 Each command will install all dependencies, compile the firmware, and upload it to the G6 panel if it is connected via USB. The same commands work across all platforms.
 
+## ⚠️ Batch 0.1.3 Hardware
+
+The "batch0.1.3" hardware has the LEDs flipped, meaning the high/low signals are reversed compared to the standard design. **This batch may behave unexpectedly and should not be used.** The standard `deploy-single-led` and `deploy-pattern` commands will not work correctly on this hardware.
+
+For debugging purposes, dedicated batch0.1.3 commands are available that account for the reversed polarity:
+
+```
+pixi run deploy-single-led-batch0.1.3
+```
+
+```
+pixi run deploy-pattern-batch0.1.3
+```
+
+These will upload firmware with corrected signal levels to the batch0.1.3 hardware.
+
 ## License
 MIT

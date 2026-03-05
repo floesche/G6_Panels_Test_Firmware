@@ -13,7 +13,7 @@ void setup() {
         COL_PIN_mask |= (uint64_t(1) << COL_PIN(i));
     }
     gpio_set_dir_out_masked64(COL_PIN_mask);
-    gpio_clr_mask64(COL_PIN_mask);
+    gpio_set_mask64(COL_PIN_mask);
 
     // Initialize row pins, create mask and set to high
     uint64_t ROW_PIN_mask = 0;
@@ -22,7 +22,7 @@ void setup() {
         ROW_PIN_mask |= (uint64_t(1) << ROW_PIN(i));
     }
     gpio_set_dir_out_masked64(ROW_PIN_mask);
-    gpio_set_mask64(ROW_PIN_mask);
+    gpio_clr_mask64(ROW_PIN_mask);
 
 }
 

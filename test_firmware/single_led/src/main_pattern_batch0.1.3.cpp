@@ -13,7 +13,7 @@ void setup() {
         COL_PIN_mask |= (uint64_t(1) << COL_PIN(i));
     }
     gpio_set_dir_out_masked64(COL_PIN_mask);
-    gpio_clr_mask64(COL_PIN_mask);
+    gpio_set_mask64(COL_PIN_mask);
 
     // Initialize row pins, create mask and set to low (off)
     uint64_t ROW_PIN_mask = 0;
@@ -22,9 +22,10 @@ void setup() {
         ROW_PIN_mask |= (uint64_t(1) << ROW_PIN(i));
     }
     gpio_set_dir_out_masked64(ROW_PIN_mask);
-    gpio_set_mask64(ROW_PIN_mask);
+    gpio_clr_mask64(ROW_PIN_mask);
 
 }
+
 
 // 20x20 pattern matrix defining which LEDs are on (1) and off (0)
 // Rows and columns correspond to physical layout indices
@@ -71,7 +72,7 @@ void loop() {
     //   - 400 LEDs on: cycle = 20 ms    (    50 refreshes/s per LED)
     //
     // Note: if only a single LED is set to 1 in the pattern matrix, the
-    // behaviour is very similar to main_single_led.cpp: one LED toggling
+    // behaviour is very similar to main_single_led.cpp — one LED toggling
     // on and off at the same duty cycle and refresh rate.
 
     for (uint8_t row = 0; row < PANEL_SIZE; row++) {
